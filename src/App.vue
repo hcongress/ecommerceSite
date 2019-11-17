@@ -15,9 +15,27 @@
           gradient="to top right, rgba(22,11,255,.5), rgba(199,94,255,.8)"
         ></v-img>
       </template>
+      <v-menu top :offset-x="offset">
+            <template v-slot:activator="{ on }">
+              <v-btn
+                dark
+                icon
+                v-on="on"
+              >
+                <v-app-bar-nav-icon></v-app-bar-nav-icon>
+              </v-btn>
+            </template>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
+            <v-list>
+              <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+                @click="hi"
+              >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
       <v-spacer></v-spacer>
       <v-toolbar-title class="display-2 font-weight-black">Book Store</v-toolbar-title>
 
@@ -45,7 +63,18 @@ export default {
   },
 
   data: () => ({
-    //
+    items: [
+      { title: 'Home' },
+      { title: 'Action' },
+      { title: 'Drama' },
+      { title: 'Fiction' },
+      { title: 'Adventure' },
+      { title: 'Historical' },
+      { title: 'Science Fiction' },
+      { title: 'Nonfiction' },
+      { title: 'Romance' },
+      { title: 'Science' }
+    ]//
   })
 }
 </script>
